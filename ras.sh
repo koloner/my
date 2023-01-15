@@ -1,3 +1,5 @@
+#!/bin/bash
+# shellcheck disable=SC1091,SC2164,SC2034,SC1072,SC1073,SC1009
 function radiusConfig(){
 preinst
 	packages=("openvpn-auth-radius" "build-essential" "libgcrypt20-dev" "unzip" "mlocate")
@@ -219,3 +221,64 @@ function editras(){
 	echo "$newrasip	$newsecret" |  tee /etc/radiusclient/servers
 	sleep 3
 	}
+	
+	function Selection(){
+	choice=0
+	while [ $choice -eq 0 ]
+	do
+	clear
+	printf " %-40s \n" "`date`"
+	echo
+	echo -e "\e[0;31m1) Install OpenVPN Server With IBSng Config \e[0m"
+	echo -e "\e[0;33m2) Install Cisco Any Connect Server With IBSng Config \e[0m"
+	echo -e "\e[0;31m3) Install L2TP Server With IBSng Config \e[0m"
+	echo -e "\e[0;33m4) Install PPTP Server With IBSng Config \e[0m"
+	echo -e "\e[0;31m5) Install IKEv2 Server With IBSng Config \e[0m"
+	echo -e "\e[0;33m6) Install ShadowSocks Server \e[0m"
+	echo -e "\e[0;31m7) Install WireGaurd Server \e[0m"
+	echo
+	echo -e "\e[0;32m9) Edit IBSng Configuration \e[0m"
+	echo
+	echo "0) Exit"
+	echo
+	read -rp "Select a number:" Selection
+
+	if [ $Selection -gt 10 ]
+	then
+		echo "The variable is greater than 9."
+		sleep 1s
+	elif [ $Selection -eq 1 ]
+	then
+		installopenvpn
+	elif [ $Selection -eq 2 ]
+	then
+		installocs
+	elif [ $Selection -eq 3 ]
+	then
+		installl2tp
+	elif [ $Selection -eq 4 ]
+	then
+		installpptp
+	elif [ $Selection -eq 5 ]
+	then
+		installikev2
+	elif [ $Selection -eq 6 ]
+	then
+		installsocks5
+	elif [ $Selection -eq 7 ]
+	then
+		installwiregaurd
+	elif [ $Selection -eq 9 ]
+	then
+		editras
+	elif [ $Selection -eq 0 ]
+	then
+		choice=1
+	else
+		echo "Exit"
+	fi
+	done
+}
+
+
+Selection
