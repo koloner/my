@@ -229,15 +229,8 @@ function editras(){
 	clear
 	printf " %-40s \n" "`date`"
 	echo
-	echo -e "\e[0;31m1) Install OpenVPN Server With IBSng Config \e[0m"
-	echo -e "\e[0;33m2) Install Cisco Any Connect Server With IBSng Config \e[0m"
-	echo -e "\e[0;31m3) Install L2TP Server With IBSng Config \e[0m"
-	echo -e "\e[0;33m4) Install PPTP Server With IBSng Config \e[0m"
-	echo -e "\e[0;31m5) Install IKEv2 Server With IBSng Config \e[0m"
-	echo -e "\e[0;33m6) Install ShadowSocks Server \e[0m"
-	echo -e "\e[0;31m7) Install WireGaurd Server \e[0m"
-	echo
-	echo -e "\e[0;32m9) Edit IBSng Configuration \e[0m"
+	echo -e "\e[0;31m1) Install Radius \e[0m"
+	echo -e "\e[0;32m2) Edit Radius Configuration \e[0m"
 	echo
 	echo "0) Exit"
 	echo
@@ -249,26 +242,8 @@ function editras(){
 		sleep 1s
 	elif [ $Selection -eq 1 ]
 	then
-		installopenvpn
+		radiusConfig
 	elif [ $Selection -eq 2 ]
-	then
-		installocs
-	elif [ $Selection -eq 3 ]
-	then
-		installl2tp
-	elif [ $Selection -eq 4 ]
-	then
-		installpptp
-	elif [ $Selection -eq 5 ]
-	then
-		installikev2
-	elif [ $Selection -eq 6 ]
-	then
-		installsocks5
-	elif [ $Selection -eq 7 ]
-	then
-		installwiregaurd
-	elif [ $Selection -eq 9 ]
 	then
 		editras
 	elif [ $Selection -eq 0 ]
