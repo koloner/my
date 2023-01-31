@@ -41,7 +41,7 @@ elif grep -qs "^tls-auth" /etc/openvpn/server.conf; then
 	TLS_SIG="2"
 fi
 # Generates the custom client.ovpn
-cp /etc/openvpn/client-template.txt "$homeDir/$CLIENT.ovpn"
+cp /etc/openvpn/client-template.txt "$homeDir/ovpn/$CLIENT.ovpn"
 {
 	echo "<ca>"
 	cat "/etc/openvpn/easy-rsa/pki/ca.crt"
@@ -65,8 +65,6 @@ cp /etc/openvpn/client-template.txt "$homeDir/$CLIENT.ovpn"
 		echo "</tls-auth>"
 		;;
 	esac
-} >>"$homeDir/$CLIENT.ovpn"
-echo ""
-echo "The configuration file has been written to $homeDir/$CLIENT.ovpn."
-echo "Download the .ovpn file and import it in your OpenVPN client."
+} >>"$homeDir/ovpn/$CLIENT.ovpn"
+echo "OK $homeDir/ovpn/$CLIENT.ovpn."
 exit 0
