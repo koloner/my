@@ -1,5 +1,4 @@
 #!/bin/bash
-# shellcheck disable=SC1091,SC2164,SC2034,SC1072,SC1073,SC1009
 function radiusConfig(){
 preinst
 	packages=("openvpn-auth-radius" "build-essential" "libgcrypt20-dev" "unzip" "mlocate")
@@ -131,8 +130,8 @@ systemctl restart openvpn
           sed -i -r "/.*for authserver applies.*/a acctserver   $IPBS" /etc/radiusclient/radiusclient.conf
           echo "Add Successfully"
 		sleep 1
-echo -e "
-NAS-Identifier=OpenVpn
+cat <<'radius' > /usr/lib/openvpn/radiusplugin.cnf
+# NAS-Identifier=OpenVpn
 Service-Type=5
 Framed-Protocol=1
 NAS-Port-Type=5
@@ -148,7 +147,8 @@ name=$IPBS
 retry=1
 wait=1
 sharedsecret=$secpass
-}" >> /usr/lib/openvpn/radiusplugin.cnf
+}
+radius
 		systemctl restart openvpn
 		g=0
 		elif [ "$ans" = "n" ]; then
