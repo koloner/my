@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # DNSPro - Smart DNS Proxy
+MYIP=$(wget -qO- ipv4.icanhazip.com);
 
 if [ ! -f /etc/dnsmasq.d/sniproxy.conf ]; then
 	echo -e "- Installation started ...\n";
