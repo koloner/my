@@ -7,6 +7,13 @@ if [ ! -f /etc/dnsmasq.d/sniproxy.conf ]; then
 	echo -e "- Installation started ...\n";
 	sleep 2;
 
+ 	echo "Disable";
+	sudo systemctl disable systemd-resolved;
+	sudo systemctl stop systemd-resolved;
+ 	ls -lh /etc/resolv.conf;
+	sudo unlink /etc/resolv.conf;
+	echo nameserver 8.8.8.8 | sudo tee /etc/resolv.conf;
+  
 	# EPEL Install
 	echo "EPEL installation started.";
 	yum -y install epel-release > /dev/null 2>&1;
@@ -19,13 +26,13 @@ if [ ! -f /etc/dnsmasq.d/sniproxy.conf ]; then
 	echo -e "Prerequisites were installed.\n";
 	sleep 2;
 
- 	echo "Install AutoConf"
-  	wget http://ftp.gnu.org/gnu/autoconf/autoconf-latest.tar.gz
+ 	echo "Install AutoConf";
+  	wget http://ftp.gnu.org/gnu/autoconf/autoconf-latest.tar.gz;
 	tar xzvf autoconf-latest.tar.gz;
-	cd autoconf-2.72
-   	./configure
-	make
-	make install
+	cd autoconf-2.72;
+   	./configure;
+	make;
+	make install;
 
  
 	# Development Tools Install
