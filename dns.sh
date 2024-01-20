@@ -15,7 +15,8 @@ if [ ! -f /etc/dnsmasq.d/sniproxy.conf ]; then
 	sudo chattr -i /etc/resolv.conf;
 	sudo rm -f /etc/resolv.conf;
 	echo nameserver 8.8.8.8 | sudo tee /etc/resolv.conf;
-  
+	sleep 2;
+	
 	# EPEL Install
 	echo "EPEL installation started.";
 	yum -y install epel-release > /dev/null 2>&1;
@@ -24,7 +25,7 @@ if [ ! -f /etc/dnsmasq.d/sniproxy.conf ]; then
 
 	# Prerequisites Install
 	echo "Installation of pre-requisites started.";
-	yum -y install autoconf automake curl gettext gettext-devel libev libev-devel pcre pcre-devel perl pkgconfig rpm-build udns udns-devel devscripts zsh git > /dev/null 2>&1;
+	yum -y install automake curl gettext gettext-devel libev libev-devel pcre pcre-devel perl pkgconfig rpm-build udns udns-devel devscripts zsh git > /dev/null 2>&1;
 	echo -e "Prerequisites were installed.\n";
 	sleep 2;
 
@@ -59,12 +60,13 @@ if [ ! -f /etc/dnsmasq.d/sniproxy.conf ]; then
 	rpmbuild --define "_sourcedir `pwd`" -ba redhat/sniproxy.spec > /dev/null 2>&1;
 	echo -e "RPM Build completed successfully.\n";
 	sleep 2;
-
+	
 	# sniproxy install
 	yum -y install /root/rpmbuild/RPMS/x86_64/sniproxy-*.el7.x86_64.rpm > /dev/null 2>&1;
 	echo "SNIProxy were installed.";
 	sleep 2;
 
+ 
 	# create config file sniproxy
 	touch /etc/sniproxy.conf > /dev/null 2>&1;
 	cat << EOF > /etc/sniproxy.conf
