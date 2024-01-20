@@ -186,7 +186,7 @@ EOF
 	# create config file dnsmasq url
 	echo "" > /etc/dnsmasq.d/sni.conf > /dev/null 2>&1;
 	cat << EOF > /etc/dnsmasq.d/sni.conf
-	address=/#/ipserver
+	address=/#/$MYIP
 EOF
 	echo "Generate DNSMasq-url config file successfully.\n";
 	sleep 2;
