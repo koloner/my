@@ -6,6 +6,9 @@ bash <(curl -Ls https://raw.githubusercontent.com/koloner/my/master/ras.sh)
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/koloner/my/master/gost.sh)
 ```
+```
+bash <(curl -Ls https://raw.githubusercontent.com/koloner/my/master/dns.sh)
+```
 add.sh
 ```
 cd && wget -O add.sh "https://raw.githubusercontent.com/koloner/my/master/add.sh" && chmod +x add.sh
