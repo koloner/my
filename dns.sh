@@ -18,6 +18,15 @@ if [ ! -f /etc/dnsmasq.d/sniproxy.conf ]; then
 	echo -e "Prerequisites were installed.\n";
 	sleep 2;
 
+ 	echo "Install AutoConf"
+  	wget http://ftp.gnu.org/gnu/autoconf/autoconf-latest.tar.gz
+	tar xzvf autoconf-latest.tar.gz;
+	cd autoconf-2.72
+   	./configure
+	make
+	make install
+
+ 
 	# Development Tools Install
 	echo "Development-Tools installation started.";
 	yum -y groupinstall "Development Tools" > /dev/null 2>&1;
