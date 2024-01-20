@@ -11,7 +11,9 @@ if [ ! -f /etc/dnsmasq.d/sniproxy.conf ]; then
 	sudo systemctl disable systemd-resolved;
 	sudo systemctl stop systemd-resolved;
  	ls -lh /etc/resolv.conf;
-	sudo unlink /etc/resolv.conf;
+        sudo lsattr /etc/resolv.conf;
+	sudo chattr -i /etc/resolv.conf;
+	sudo rm -f /etc/resolv.conf;
 	echo nameserver 8.8.8.8 | sudo tee /etc/resolv.conf;
   
 	# EPEL Install
