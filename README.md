@@ -1,23 +1,9 @@
 # my
+# GoLang
 ```
-bash <(curl -Ls https://raw.githubusercontent.com/koloner/my/master/ras.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/koloner/my/main/golang/last.sh)
 ```
-
+Gost v2
 ```
-bash <(curl -Ls https://raw.githubusercontent.com/koloner/my/master/gost.sh)
-```
-```
-bash <(curl -Ls https://raw.githubusercontent.com/koloner/my/master/dns.sh)
-```
-add.sh
-```
-cd && wget -O add.sh "https://raw.githubusercontent.com/koloner/my/master/add.sh" && chmod +x add.sh
-```
-adduser.sh
-```
-cd && mkdir ovpn && wget -O adduser.sh "https://raw.githubusercontent.com/koloner/my/master/adduser.sh" && chmod +x adduser.sh
-```
-deluser.sh
-```
-cd && wget -O deluser.sh "https://raw.githubusercontent.com/koloner/my/master/deluser.sh" && chmod +x deluser.sh
+bash <(curl -Ls https://raw.githubusercontent.com/koloner/my/main/gost/v2.sh)
 ```
